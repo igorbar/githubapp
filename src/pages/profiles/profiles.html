@@ -1,0 +1,29 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>GitHub profiles</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card>
+    <form (ngSubmit)="onSubmit()">
+      <ion-item>
+        <ion-label>
+          GitNub User:
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="githubuser" name="githubuser"></ion-input>
+      </ion-item>
+      <br>
+      
+      <button ion-button type="submit" clear small>Search</button>
+      <button ion-button type="reset" clear small>Reset</button>
+    </form>
+  </ion-card>
+  <ion-card>  </ion-card>
+  <ion-card>  </ion-card>
+
+</ion-content>
