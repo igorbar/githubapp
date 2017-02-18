@@ -1,29 +1,58 @@
-
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>GitHub profiles</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>GitHub profiles</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-card>
-    <form (ngSubmit)="onSubmit()">
-      <ion-item>
-        <ion-label>
-          GitNub User:
-        </ion-label>
-        <ion-input type="text" [(ngModel)]="githubuser" name="githubuser"></ion-input>
-      </ion-item>
-      <br>
-      
-      <button ion-button type="submit" clear small>Search</button>
-      <button ion-button type="reset" clear small>Reset</button>
-    </form>
-  </ion-card>
-  <ion-card>  </ion-card>
-  <ion-card>  </ion-card>
+    <ion-card>
+        <form (ngSubmit)="onSubmit()">
+            <ion-item>
+                <ion-label>
+                    GitNub User:
+                </ion-label>
+                <ion-input type="text" [(ngModel)]="githubuser" name="githubuser"></ion-input>
+            </ion-item>
+            <br>
+
+            <button ion-button type="submit" clear small>Search</button>
+            <button ion-button type="reset" clear small>Reset</button>
+        </form>
+    </ion-card>
+    <ion-card *ngIf="profiles">
+        <ion-item>
+            <ion-thumbnail item-left>
+                <img class="avatar" src="{{profiles.avatar_url}}"/>
+            </ion-thumbnail>
+            <ion-title>{{profiles.name}}</ion-title>
+        </ion-item>
+        <ion-card-content>
+            <p>{{profiles.bio}}</p>
+        </ion-card-content>
+
+        <ion-row>
+            <ion-col>
+                <button ion-button icon-left clear small>
+                    <ion-icon name="thumbs-up"></ion-icon>
+                    <div>{{profiles.followers}} followers</div>
+                </button>
+            </ion-col>
+            <ion-col>
+                <button ion-button icon-left clear small>
+                    <ion-icon name="text"></ion-icon>
+                    <div>{{profiles.public_repos}} Public Repos</div>
+                </button>
+            </ion-col>
+            <ion-col center text-center>
+                <ion-note>
+                    Created at {{profiles.created_at | date}}
+                </ion-note>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+    <ion-card></ion-card>
 
 </ion-content>
